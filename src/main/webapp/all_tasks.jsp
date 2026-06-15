@@ -19,22 +19,23 @@
     <h1 class="text-uppercase">All Tasks:</h1>
 
     <div class="row">
-        <div class="col-12">
 
-            <%
-                Session s = FactoryProvider.getFactory().openSession();
-                String hql = "FROM ToDoApp t ORDER BY CASE t.priority " +
-                        "WHEN 'High' THEN 1 " +
-                        "WHEN 'Medium' THEN 2 " +
-                        "WHEN 'Low' THEN 3 ELSE 4 END,"  +
-                        "t.date DESC";
-                Query<ToDoApp> q = s.createQuery(hql, ToDoApp.class);
-                List<ToDoApp> list = q.list();
+        <%
+            Session s = FactoryProvider.getFactory().openSession();
+            String hql = "FROM ToDoApp t ORDER BY CASE t.priority " +
+                    "WHEN 'High' THEN 1 " +
+                    "WHEN 'Medium' THEN 2 " +
+                    "WHEN 'Low' THEN 3 ELSE 4 END, " +
+                    "t.date DESC";
+            Query<ToDoApp> q = s.createQuery(hql, ToDoApp.class);
+            List<ToDoApp> list = q.list();
 
-                for (ToDoApp task : list) {
-            %>
+            for (ToDoApp task : list) {
+        %>
 
-            <div class="card mt-3">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+
                 <img class="card-img-top m-4"
                      style="max-width:100px"
                      src="img/clipboard.png"
@@ -64,14 +65,15 @@
                     <a href="<%= request.getContextPath() %>/edit.jsp?task_id=<%= task.getId() %>"
                        class="btn btn-primary">Edit</a>
                 </div>
+
             </div>
-
-            <%
-                }
-                s.close();
-            %>
-
         </div>
+
+        <%
+            }
+            s.close();
+        %>
+
     </div>
 </div>
 

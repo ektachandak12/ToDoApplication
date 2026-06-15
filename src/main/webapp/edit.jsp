@@ -51,7 +51,8 @@
                     id="description"
                     placeholder="Enter task description"
                     class="form-control"
-                    style = "height:150px"><%=task.getDescription()%>
+                    style = "height:150px">
+                <%=task.getDescription()%>
             </textarea>
             <div class="form-group">
                 <label for="Priority">Priority</label>
