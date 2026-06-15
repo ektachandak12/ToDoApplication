@@ -1,4 +1,4 @@
-target/
+/target
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -14,7 +14,7 @@ target/
 *.ipr
 
 
-# Sensitive configuration
+# Sensitive configurations
 src/main/resources/hibernate.cfg.xml
 
 ### Eclipse ###
